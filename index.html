@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herrería Moderna</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  transition: background 0.3s;
+  z-index: 1000;
+  background: rgba(34, 34, 34, 0.95);
+}
+
+header.scrolled {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+  background: #007bff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, background 0.3s;
+}
+
+header a:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Número de teléfono */
+header .telefono {
+  background: #28a745;
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, background 0.3s;
+}
+
+header .telefono:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #4b5563 100%);
+  color: white;
+  padding: 0 20px;
+  padding-top: 100px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.payment-icons img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.payment-icons p {
+  font-size: 1rem;
+  color: white;
+}
+
+/* Galería */
+.galeria {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.galeria h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  color: #222;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Ajuste de tarjetas e imágenes */
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #007bff;
+  cursor: pointer;
+}
+
+/* Modal (Lightbox) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding: 20px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.9);
+}
+
+.modal img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+}
+
+.modal:target {
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+  margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    justify-content: center;
+  }
+
+  header a, header .telefono {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .payment-icons img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .payment-icons p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  header a, header .telefono {
+    width: 90%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 12px 0;
+  }
+
+  .hero {
+    padding-top: 180px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .payment-icons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .payment-icons p {
+    font-size: 0.9rem;
+  }
+
+  .card img {
+    height: 180px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Encabezado con botones -->
+<header id="navbar">
+  <a href="https://wa.me/527775093569?text=Hola%20quiero%20más%20información" target="_blank">💬 WhatsApp</a>
+  <a href="https://maps.google.com/?q=Herrería+Moderna" target="_blank">📍 Ubicación</a>
+  <a href="tel:+527775093569" class="telefono">📲 777 509 3569</a>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Herrería Moderna</h1>
+  <p>Diseños de herrería artística y funcional con calidad y estilo</p>
+  <div class="payment-icons">
+    <img src="banco.png" alt="Pago con tarjeta">
+    <p>Se Aceptan Pagos Con Tarjeta</p>
+  </div>
+</section>
+
+<!-- Galería -->
+<section class="galeria">
+  <h2>Trabajos Realizados</h2>
+  <div class="grid">
+    <div class="card"><img src="1.jpg" alt="Trabajo 1"></div>
+    <div class="card"><img src="2.jpg" alt="Trabajo 2"></div>
+    <div class="card"><img src="3.jpg" alt="Trabajo 3"></div>
+    <div class="card"><img src="4.jpg" alt="Trabajo 4"></div>
+    <div class="card"><img src="5.jpg" alt="Trabajo 5"></div>
+    <div class="card"><img src="6.jpg" alt="Trabajo 6"></div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <a href="#" class="modal-close">&times;</a>
+  <img id="modal-img" src="">
+</div>
+
+<footer>
+  Herrería Moderna
+</footer>
+
+<script>
+// Navbar cambia al hacer scroll
+window.addEventListener("scroll", function() {
+  const navbar = document.getElementById("navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+// Modal para imágenes
+const images = document.querySelectorAll(".card img");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+  });
+});
+
+document.querySelector(".modal-close").addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.style.display = "none";
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+
+<script src="https://static.app/js/static.js" type="text/javascript"></script>
+</body>
+</html>

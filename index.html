@@ -78,6 +78,19 @@ header .telefono:hover {
   transform: translateY(-2px);
 }
 
+/* Logo */
+header .logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* pushes buttons to the right */
+}
+
+header .logo img {
+  height: 50px; /* fixed height */
+  width: auto;  /* keeps aspect ratio */
+  object-fit: contain;
+}
+
 /* Hero */
 .hero {
   min-height: 100vh;
@@ -257,6 +270,10 @@ footer {
     padding: 12px 0;
   }
 
+  header .logo img {
+    height: 40px; /* smaller logo on very small screens */
+  }
+
   .hero {
     padding-top: 180px;
   }
@@ -286,8 +303,12 @@ footer {
 </head>
 <body>
 
-<!-- Encabezado con botones -->
+<!-- Encabezado con logo y botones -->
 <header id="navbar">
+  <div class="logo">
+    <img src="Logo.png" alt="Logo Herrería Moderna">
+  </div>
+
   <a href="https://wa.me/527775093569?text=Hola%20quiero%20más%20información" target="_blank">💬 WhatsApp</a>
   <a href="https://maps.google.com/?q=Herrería+Moderna" target="_blank">📍 Ubicación</a>
   <a href="tel:+527775093569" class="telefono">📲 777 509 3569</a>
